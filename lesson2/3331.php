@@ -24,6 +24,30 @@ function display($books) {
     
     echo "Display books: <br>";
     display($books);
+
+    unset($books[$index]);
+    $books = array_values($books); // re-index array
+    echo "\nAfter removing book at index " . ($index + 1) . ":\n";
+    display($books);
+
+   
+    $book = "Random Book " . rand(1, 100);
+    array_splice($books, $index, 0, $book); // insert $book at $index
+    echo "\nAfter adding a random book at index " . ($index + 1) . ":\n";
+    display($books);
+
+   
+    echo "\nDisplaying books in a table:\n";
+    echo str_repeat("-", 20) . "\n";
+    foreach ($books as $index => $book) {
+        echo "|" . ($index + 1) . "|" . $book . "|\n";
+    }
+    echo str_repeat("-", 20) . "\n";
+
+   
+    $books = array();
+    echo "\nAfter removing all books:\n";
+    display($books);
     ?>
 </body>
 </html>
